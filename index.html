@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Towers of Hanoi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>Towers of Hanoi</h1>
+            <div class="game-stats">
+                <div class="stat">
+                    <label>Moves:</label>
+                    <span id="move-counter">0</span>
+                </div>
+                <div class="stat">
+                    <label>Optimal:</label>
+                    <span id="optimal-moves">7</span>
+                </div>
+                <div class="stat">
+                    <label>Efficiency:</label>
+                    <span id="efficiency">0%</span>
+                </div>
+                <div class="stat">
+                    <label>Time:</label>
+                    <span id="game-timer">00:00</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="game-main">
+            <canvas id="game-canvas" width="800" height="600" 
+                    role="application" 
+                    aria-label="Towers of Hanoi game board"
+                    aria-describedby="game-instructions"
+                    tabindex="0"></canvas>
+            <div id="game-instructions" class="sr-only">
+                Interactive Towers of Hanoi puzzle. Use arrow keys to navigate between rods, 
+                Enter or Space to select and move disks. The goal is to move all disks from 
+                the left rod to the right rod, following the rules: only move one disk at a time, 
+                only move the top disk from each rod, and never place a larger disk on a smaller one.
+            </div>
+            <div class="game-message" id="game-message" role="status" aria-live="polite" aria-atomic="true"></div>
+        </main>
+
+        <div class="game-controls" role="toolbar" aria-label="Game controls">
+            <div class="control-group" role="group" aria-label="Game actions">
+                <button id="reset-btn" class="control-btn" 
+                        aria-label="Reset game (Ctrl+R)"
+                        title="Start a new game">Reset</button>
+                <button id="undo-btn" class="control-btn" 
+                        aria-label="Undo last move (Ctrl+Z)"
+                        title="Reverse the last move">Undo</button>
+                <button id="hint-btn" class="control-btn" 
+                        aria-label="Get hint (H key)"
+                        title="Show the next optimal move">Hint</button>
+                <button id="solve-btn" class="control-btn" 
+                        aria-label="Auto-solve puzzle (S key)"
+                        title="Watch the computer solve the puzzle">Solve</button>
+                <button id="pause-btn" class="control-btn" style="display: none;"
+                        aria-label="Pause auto-solve (P key)"
+                        title="Pause or resume the automatic solution">Pause</button>
+            </div>
+            
+            <div class="settings-group" role="group" aria-label="Game settings">
+                <label for="disk-count">Number of disks:</label>
+                <select id="disk-count" class="setting-control" 
+                        aria-label="Select number of disks (3 to 8)"
+                        title="Choose how many disks to play with">
+                    <option value="3" selected>3 disks</option>
+                    <option value="4">4 disks</option>
+                    <option value="5">5 disks</option>
+                    <option value="6">6 disks</option>
+                    <option value="7">7 disks</option>
+                    <option value="8">8 disks</option>
+                </select>
+                
+                <label for="show-hints">
+                    <input type="checkbox" id="show-hints" checked
+                           aria-describedby="hints-description"
+                           title="Toggle visual hints for valid moves">
+                    Show visual hints
+                </label>
+                <div id="hints-description" class="sr-only">
+                    When enabled, valid destination rods will be highlighted when you select a disk
+                </div>
+                
+                <button id="achievements-btn" class="control-btn"
+                        aria-label="View achievements"
+                        title="See your game achievements and statistics">Achievements</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/gameState.js"></script>
+    <script src="js/gameState.test.js"></script>
+    <script src="js/gameEngine.js"></script>
+    <script src="js/gameEngine.test.js"></script>
+    <script src="js/renderer.js"></script>
+    <script src="js/renderer.test.js"></script>
+    <script src="js/animationSystem.js"></script>
+    <script src="js/inputHandler.js"></script>
+    <script src="js/solverEngine.js"></script>
+    <script src="js/celebrationSystem.js"></script>
+    <script src="js/messageSystem.js"></script>
+    <script src="js/accessibilitySystem.js"></script>
+    <script src="js/helpSystem.js"></script>
+    <script src="js/performanceMonitor.js"></script>
+    <script src="js/integrationTests.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
